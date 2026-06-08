@@ -1,0 +1,256 @@
+--- group-buys.html (原始)
+
+
++++ group-buys.html (修改后)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Buys | SunSpot SG</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Leaflet CSS & JS for the Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map { height: 450px; width: 100%; border-radius: 0.75rem; z-index: 1; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-emerald-600">☀️ SunSpot SG</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="solar-basics.html" class="text-gray-600 hover:text-emerald-600">Solar Basics</a>
+                    <a href="compare-quotes.html" class="text-gray-600 hover:text-emerald-600">Compare Quotes</a>
+                    <a href="group-buys.html" class="text-emerald-600 font-medium">Group Buys</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-emerald-600 font-medium hover:text-emerald-700">Log In</button>
+                    <button class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition">Sign Up via Singpass</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Group Buy Section with Interest Map -->
+    <section class="py-16 bg-emerald-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Join a Group Buy & Save Big</h1>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Pool together with neighbors in your estate to unlock exclusive bulk discounts on solar installations. See where interest is building in your area and sign up today!</p>
+            </div>
+
+            <!-- Interest Map -->
+            <div class="bg-white p-6 rounded-xl shadow-lg mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Solar Interest Heatmap</h2>
+                <p class="text-gray-600 mb-6">See where your neighbors are adopting solar. Drop a pin to register your interest anonymously.</p>
+
+                <div class="bg-white p-4 rounded-xl shadow-lg mb-4">
+                    <div id="map"></div>
+                    <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+                        <span>🟢 High Interest &nbsp; 🟡 Medium Interest &nbsp; 🔵 Low Interest</span>
+                        <button class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-md font-medium hover:bg-emerald-200 transition">Drop My Pin (Anonymous)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Group Buys -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Siglap Solar Collective -->
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Siglap Solar Collective</h3>
+                        <p class="text-gray-600 mt-2">Join 32 other landed homeowners in your estate to unlock a <span class="font-bold text-emerald-600">15% group discount</span>.</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                            <span id="siglap-count">32 Joined</span><span>Target: 42 Homes</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-4">
+                            <div id="siglap-progress" class="bg-emerald-500 h-4 rounded-full transition-all duration-500" style="width: 76%"></div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 text-center">10 more homes needed to unlock the discount tier.</p>
+                    </div>
+                    <div class="text-center">
+                        <button id="siglap-btn" onclick="joinGroupBuy('siglap')" class="bg-emerald-600 text-white text-lg px-8 py-4 rounded-xl font-bold hover:bg-emerald-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full">
+                            Join Group Buy (Free & Non-binding)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Thomson Green Initiative -->
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Thomson Green Initiative</h3>
+                        <p class="text-gray-600 mt-2">Join 18 other homeowners to unlock a <span class="font-bold text-emerald-600">12% group discount</span>.</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                            <span id="thomson-count">18 Joined</span><span>Target: 30 Homes</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-4">
+                            <div id="thomson-progress" class="bg-emerald-500 h-4 rounded-full transition-all duration-500" style="width: 60%"></div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 text-center">12 more homes needed to unlock the discount tier.</p>
+                    </div>
+                    <div class="text-center">
+                        <button id="thomson-btn" onclick="joinGroupBuy('thomson')" class="bg-emerald-600 text-white text-lg px-8 py-4 rounded-xl font-bold hover:bg-emerald-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full">
+                            Join Group Buy (Free & Non-binding)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900">Start or Join a Group Buy</h3>
+                    <p class="text-gray-600 mt-2">Don't see your estate listed? Sign up to express interest and we'll help organize a group buy in your area.</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="John Tan">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="john@example.com">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Postal Code</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="e.g., 458932">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Property Type</label>
+                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                            <option>Landed - Detached</option>
+                            <option>Landed - Semi-Detached</option>
+                            <option>Landed - Terrace</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Interest Level</label>
+                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                            <option>Very Interested - Ready to Proceed</option>
+                            <option>Moderately Interested - Need More Info</option>
+                            <option>Just Exploring Options</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-700 transition shadow-lg">
+                        Submit Interest
+                    </button>
+
+                    <p class="text-xs text-gray-500 text-center">By submitting, you agree to be contacted about group buy opportunities. Your information will not be shared with third parties without consent.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">SunSpot SG</h4>
+                <p class="text-sm">Empowering Singapore's landed estates to transition to clean, affordable energy.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Official Resources</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://www.ema.gov.sg/consumer-information/solar" target="_blank" class="hover:text-white">EMA Solar Portal</a></li>
+                    <li><a href="https://www.solar-repository.sg/" target="_blank" class="hover:text-white">National Solar Repository (SERIS)</a></li>
+                    <li><a href="https://www.solar-repository.sg/solar-basics" target="_blank" class="hover:text-white">Solar Basics Guide</a></li>
+                    <li><a href="https://www.solar-repository.sg/solar-irradiance-map" target="_blank" class="hover:text-white">Live Solar Irradiance Map</a></li>
+                    <li><a href="https://www.solar-repository.sg/pv-systems-map" target="_blank" class="hover:text-white">PV Systems Map of Singapore</a></li>
+                    <li><a href="https://www.spgroup.com.sg/what-we-do/solar" target="_blank" class="hover:text-white">SP Group Solar</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Government Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://www.ema.gov.sg/regulations-licences/regulations/standards-guidelines" target="_blank" class="hover:text-white">EMA Standards</a></li>
+                    <li><a href="https://www.ura.gov.sg/Corporate/Planning/Guidelines" target="_blank" class="hover:text-white">URA Guidelines</a></li>
+                    <li><a href="https://www.bca.gov.sg/greenmark/green-mark-schemes/solar-pv-systems" target="_blank" class="hover:text-white">BCA Green Mark</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Privacy Policy (PDPA)</a></li>
+                    <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+            &copy; 2026 SunSpot SG. All rights reserved. Not affiliated with SP Group, EMA, or SERIS.
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Map Initialization
+        const map = L.map('map').setView([1.3200, 103.8500], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const zones = [
+            { lat: 1.3150, lng: 103.9200, radius: 1500, name: "Siglap (12 Homes)" },
+            { lat: 1.3550, lng: 103.8300, radius: 1200, name: "Thomson (8 Homes)" },
+            { lat: 1.3300, lng: 103.7800, radius: 1000, name: "Bukit Timah (15 Homes)" }
+        ];
+
+        zones.forEach(zone => {
+            L.circle([zone.lat, zone.lng], { color: 'green', fillColor: '#10b981', fillOpacity: 0.3, radius: zone.radius }).addTo(map).bindPopup(`<b>${zone.name}</b><br>Interested in Solar`);
+            L.marker([zone.lat, zone.lng]).addTo(map).bindPopup(`<b>${zone.name}</b><br>Interested in Solar`);
+        });
+
+        // Group Buy Interaction
+        function joinGroupBuy(estate) {
+            let currentJoined, target, progressFill, countSpan, btn;
+
+            if (estate === 'siglap') {
+                currentJoined = 32;
+                target = 42;
+                progressFill = document.getElementById('siglap-progress');
+                countSpan = document.getElementById('siglap-count');
+                btn = document.getElementById('siglap-btn');
+            } else if (estate === 'thomson') {
+                currentJoined = 18;
+                target = 30;
+                progressFill = document.getElementById('thomson-progress');
+                countSpan = document.getElementById('thomson-count');
+                btn = document.getElementById('thomson-btn');
+            }
+
+            if (currentJoined < target) {
+                currentJoined++;
+                const percentage = (currentJoined / target) * 100;
+                progressFill.style.width = percentage + '%';
+                countSpan.innerHTML = `${currentJoined} Joined`;
+
+                btn.innerText = "✅ You've Joined the Collective!";
+                btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
+                btn.classList.add('bg-gray-500', 'cursor-not-allowed');
+                btn.disabled = true;
+            }
+        }
+    </script>
+
+</body>
+</html>
