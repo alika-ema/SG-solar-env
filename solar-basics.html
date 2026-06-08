@@ -1,0 +1,290 @@
+--- solar-basics.html (原始)
+
+
++++ solar-basics.html (修改后)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Basics | SunSpot SG</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .resource-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-emerald-600">☀️ SunSpot SG</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="solar-basics.html" class="text-emerald-600 font-medium">Solar Basics</a>
+                    <a href="compare-quotes.html" class="text-gray-600 hover:text-emerald-600">Compare Quotes</a>
+                    <a href="group-buys.html" class="text-gray-600 hover:text-emerald-600">Group Buys</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-emerald-600 font-medium hover:text-emerald-700">Log In</button>
+                    <button class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition">Sign Up via Singpass</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Solar Basics Content -->
+    <section class="py-16 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-emerald-600 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Official Solar Resources Hub & Basics</h1>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Access verified guidelines, regulations, and tools from EMA, SERIS, and SP Group to navigate your solar installation journey. Learn the fundamentals of photovoltaic technology below.</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="text-3xl font-bold text-emerald-600 mb-2">1,580 kWh/m²/yr</div>
+                    <p class="text-gray-600 text-sm">Singapore's average annual solar irradiance (via SERIS)</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="text-3xl font-bold text-emerald-600 mb-2">3 GWp</div>
+                    <p class="text-gray-600 text-sm">Singapore's solar deployment target by 2030</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="text-3xl font-bold text-emerald-600 mb-2">Zero Upfront</div>
+                    <p class="text-gray-600 text-sm">Available via Rent-to-Own models from certified installers</p>
+                </div>
+            </div>
+
+            <!-- Resource Categories -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- EMA Solar Main Hub -->
+                <a href="https://www.ema.gov.sg/consumer-information/solar" target="_blank" class="resource-card bg-white rounded-xl p-6 shadow-md transition-all duration-300 border-l-4 border-emerald-600">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">EMA Solar Portal</h3>
+                    <p class="text-sm text-gray-600 mb-3">The official Energy Market Authority hub for solar consumer information, guides, and FAQs.</p>
+                    <span class="text-emerald-600 text-sm font-medium">Visit EMA Portal →</span>
+                </a>
+
+                <!-- SERIS Solar Map -->
+                <a href="https://www.solar-repository.sg/" target="_blank" class="resource-card bg-white rounded-xl p-6 shadow-md transition-all duration-300 border-l-4 border-yellow-500">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                            </svg>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">National Solar Repository (SERIS)</h3>
+                    <p class="text-sm text-gray-600 mb-3">Comprehensive resource by SERIS with solar basics, economics handbook, PV system maps, and LCOE calculator for Singapore.</p>
+                    <span class="text-yellow-600 text-sm font-medium">Visit SERIS →</span>
+                </a>
+
+                <!-- SP Group Solar -->
+                <a href="https://www.spgroup.com.sg/what-we-do/solar" target="_blank" class="resource-card bg-white rounded-xl p-6 shadow-md transition-all duration-300 border-l-4 border-blue-600">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">SP Group Solar</h3>
+                    <p class="text-sm text-gray-600 mb-3">Information on grid connection, metering, and exporting excess solar energy to the national grid.</p>
+                    <span class="text-blue-600 text-sm font-medium">Visit SP Group →</span>
+                </a>
+
+                <!-- EMA Regulations -->
+                <a href="https://www.ema.gov.sg/regulations-licences/regulations/standards-guidelines" target="_blank" class="resource-card bg-white rounded-xl p-6 shadow-md transition-all duration-300 border-l-4 border-red-600">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Standards & Guidelines</h3>
+                    <p class="text-sm text-gray-600 mb-3">Official EMA technical standards, safety guidelines, and compliance requirements for solar PV.</p>
+                    <span class="text-red-600 text-sm font-medium">View Guidelines →</span>
+                </a>
+
+                <!-- URA Planning Guidelines -->
+                <a href="https://www.ura.gov.sg/Corporate/Planning/Guidelines" target="_blank" class="resource-card bg-white rounded-xl p-6 shadow-md transition-all duration-300 border-l-4 border-purple-600">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">URA Guidelines</h3>
+                    <p class="text-sm text-gray-600 mb-3">Urban Redevelopment Authority guidelines for roof modifications on landed properties.</p>
+                    <span class="text-purple-600 text-sm font-medium">View URA Rules →</span>
+                </a>
+
+                <!-- BCA Green Mark -->
+                <a href="https://www.bca.gov.sg/greenmark/green-mark-schemes/solar-pv-systems" target="_blank" class="resource-card bg-white rounded-xl p-6 shadow-md transition-all duration-300 border-l-4 border-orange-500">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">BCA & Green Mark</h3>
+                    <p class="text-sm text-gray-600 mb-3">Building and Construction Authority requirements and Green Mark schemes for solar PV.</p>
+                    <span class="text-orange-600 text-sm font-medium">Visit BCA →</span>
+                </a>
+            </div>
+
+            <!-- Key Requirements Info Box -->
+            <div class="bg-white rounded-xl p-8 shadow-lg mb-12">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Key Installation Requirements (EMA/SP Group)</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="text-emerald-600 font-bold">1</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">Engage a Qualified Person (QP)</h4>
+                            <p class="text-sm text-gray-600">A registered Architect or Professional Engineer who ensures compliance with BCA, URA, and SCDF regulations.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="text-emerald-600 font-bold">2</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">Appoint a Licensed Electrical Worker (LEW)</h4>
+                            <p class="text-sm text-gray-600">Responsible for commissioning the system and applying for electrical licenses with SP Group.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="text-emerald-600 font-bold">3</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">SP Group Connection Application</h4>
+                            <p class="text-sm text-gray-600">Your LEW will apply for solar PV grid connection and handle metering requirements.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="text-emerald-600 font-bold">4</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">Generation License (if ≥1 MWac)</h4>
+                            <p class="text-sm text-gray-600">Systems with capacity of 1 MWac and above require a Generation License from EMA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solar Basics Content from SERIS -->
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Solar Basics: Understanding Photovoltaic Technology (via SERIS)</h3>
+
+                <div class="prose max-w-none">
+                    <p class="text-gray-700 mb-4">Photovoltaic (or "PV" in short) is a renewable energy form which uses direct conversion of sunlight into electrical energy using devices called solar cells. As a result of the dramatic decline in prices of solar PV modules during the past years, the adoption of solar has increased considerably around the world. Hence, solar could play an important role in the global electricity generation mix in the future.</p>
+
+                    <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">How Solar Cells Work</h4>
+                    <p class="text-gray-700 mb-4">Almost all solar cells on the market today use semiconductor materials to harness solar energy using the photovoltaic (PV) effect. However, silicon wafer-based technologies dominate today's market. Sunlight can be considered as a flux of particles called photons, whereas electric current is a flux of free (i.e. unbound) electrons. In essence, solar cells convert the energy of a photon flux into energy of an electron flux.</p>
+
+                    <p class="text-gray-700 mb-4">Due to the high density of photons in sunlight, single solar cells generate very large electric currents (of the order of hundreds of Amperes per m²). To reduce the ohmic losses associated with such currents, solar cells are constrained in terms of size (presently to less than 300 cm²). Since solar cells generate DC voltages of less than 1 V, many cells need to be connected in series to form a module that generates a useful voltage (typically 30-40 V).</p>
+
+                    <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Solar Cell Performance Metrics</h4>
+                    <p class="text-gray-700 mb-4">The performance of a solar cell is typically characterized by its efficiency, which is the ratio of electrical power output to incident solar power. Modern commercial silicon solar cells achieve efficiencies of 18-22%, while laboratory cells have reached over 26%.</p>
+
+                    <p class="text-gray-700 mb-4">Key parameters include:</p>
+                    <ul class="list-disc pl-6 text-gray-700 mb-4">
+                        <li><strong>Open-circuit voltage (Voc):</strong> The maximum voltage available from a solar cell when no current flows</li>
+                        <li><strong>Short-circuit current (Isc):</strong> The maximum current when the voltage is zero</li>
+                        <li><strong>Fill Factor (FF):</strong> A measure of the quality of the solar cell, representing the ratio of maximum power to the product of Voc and Isc</li>
+                        <li><strong>Efficiency (η):</strong> The overall conversion efficiency from sunlight to electricity</li>
+                    </ul>
+
+                    <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Types of Solar Technologies</h4>
+                    <p class="text-gray-700 mb-4">There are several types of solar PV technologies available:</p>
+
+                    <h5 class="text-lg font-bold text-gray-900 mt-4 mb-2">Monocrystalline Silicon</h5>
+                    <p class="text-gray-700 mb-4">Made from single-crystal silicon, these panels offer the highest efficiency (18-22%) and longest lifespan. They perform well in low-light conditions and have a uniform black appearance.</p>
+
+                    <h5 class="text-lg font-bold text-gray-900 mt-4 mb-2">Polycrystalline Silicon</h5>
+                    <p class="text-gray-700 mb-4">Made from multiple silicon crystals melted together. Slightly lower efficiency (15-17%) but more affordable. They have a distinctive blue, speckled appearance.</p>
+
+                    <h5 class="text-lg font-bold text-gray-900 mt-4 mb-2">Thin-Film</h5>
+                    <p class="text-gray-700 mb-4">Made by depositing thin layers of photovoltaic material on a substrate. Lower efficiency (10-12%) but flexible and lightweight. Suitable for specific applications where weight or flexibility is important.</p>
+
+                    <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Solar in Singapore's Context</h4>
+                    <p class="text-gray-700 mb-4">Singapore receives abundant sunlight year-round, with an average annual solar irradiance of approximately 1,580 kWh/m². This makes solar PV a viable renewable energy option for the country. The government has set a target of deploying at least 2 GWp of solar capacity by 2030, enough to power about 350,000 households annually.</p>
+
+                    <p class="text-gray-700 mb-4">For landed homeowners, installing solar panels can significantly reduce electricity bills while contributing to Singapore's sustainability goals. With various financing options including zero upfront cost models, solar adoption has become increasingly accessible.</p>
+
+                    <p class="text-sm text-gray-700 mt-6 italic"><strong>Note:</strong> This content is adapted from the National Solar Repository of Singapore (SERIS). For more detailed information, visit <a href="https://www.solar-repository.sg/solar-basics" target="_blank" class="text-emerald-600 hover:underline">solar-repository.sg/solar-basics</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">SunSpot SG</h4>
+                <p class="text-sm">Empowering Singapore's landed estates to transition to clean, affordable energy.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Official Resources</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://www.ema.gov.sg/consumer-information/solar" target="_blank" class="hover:text-white">EMA Solar Portal</a></li>
+                    <li><a href="https://www.solar-repository.sg/" target="_blank" class="hover:text-white">National Solar Repository (SERIS)</a></li>
+                    <li><a href="https://www.solar-repository.sg/solar-basics" target="_blank" class="hover:text-white">Solar Basics Guide</a></li>
+                    <li><a href="https://www.solar-repository.sg/solar-irradiance-map" target="_blank" class="hover:text-white">Live Solar Irradiance Map</a></li>
+                    <li><a href="https://www.solar-repository.sg/pv-systems-map" target="_blank" class="hover:text-white">PV Systems Map of Singapore</a></li>
+                    <li><a href="https://www.spgroup.com.sg/what-we-do/solar" target="_blank" class="hover:text-white">SP Group Solar</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Government Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://www.ema.gov.sg/regulations-licences/regulations/standards-guidelines" target="_blank" class="hover:text-white">EMA Standards</a></li>
+                    <li><a href="https://www.ura.gov.sg/Corporate/Planning/Guidelines" target="_blank" class="hover:text-white">URA Guidelines</a></li>
+                    <li><a href="https://www.bca.gov.sg/greenmark/green-mark-schemes/solar-pv-systems" target="_blank" class="hover:text-white">BCA Green Mark</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Privacy Policy (PDPA)</a></li>
+                    <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+            &copy; 2026 SunSpot SG. All rights reserved. Not affiliated with SP Group, EMA, or SERIS.
+        </div>
+    </footer>
+
+</body>
+</html>
