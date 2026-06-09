@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Basics - SolarSG</title>
+    <style>
+        :root {
+            --primary: #2c5f2d;
+            --secondary: #97bc62;
+            --accent: #ffc107;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        
+        body { line-height: 1.6; color: var(--dark); background-color: var(--light); }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+        
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+        
+        /* Content Sections */
+        section { padding: 3rem 0; }
+        
+        h1, h2, h3 { color: var(--primary); margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; }
+        h2 { font-size: 2rem; border-bottom: 2px solid var(--secondary); padding-bottom: 0.5rem; margin-top: 2rem; }
+        
+        .content-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .resource-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .resource-card h4 { margin-bottom: 0.5rem; color: var(--dark); }
+        .resource-card a { color: var(--primary); text-decoration: none; font-weight: bold; }
+        .resource-card a:hover { text-decoration: underline; }
+        
+        .map-container {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        iframe { width: 100%; height: 100%; border: none; }
+        
+        .tech-comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+        }
+        
+        .tech-comparison th, .tech-comparison td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tech-comparison th { background: var(--primary); color: white; }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">☀️ SolarSG</a>
+            <ul class="nav-links">
+                <li><a href="solar-basics.html" class="active">Solar Basics</a></li>
+                <li><a href="compare-quotes.html">Compare Quotes</a></li>
+                <li><a href="group-buys.html">Group Buys</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Solar Basics for Singapore Homes</h1>
+        
+        <!-- Introduction -->
+        <div class="content-block">
+            <h2>How Solar Works</h2>
+            <p>Solar photovoltaic (PV) systems convert sunlight directly into electricity using semiconductor materials. When sunlight hits the solar cells, it knocks electrons loose from their atoms, generating an electric current.</p>
+            <br>
+            <p><strong>Key Components:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Solar Panels:</strong> Capture sunlight and convert it to DC electricity.</li>
+                <li><strong>Inverter:</strong> Converts DC electricity to AC electricity for home use.</li>
+                <li><strong>Meter:</strong> Measures energy generated and exported to the grid.</li>
+                <li><strong>Mounting Structure:</strong> Secures panels to your roof.</li>
+            </ul>
+        </div>
+
+        <!-- Live Map -->
+        <div class="content-block">
+            <h2>Live Solar Irradiance Map</h2>
+            <p>View real-time solar data across Singapore provided by SERIS (Solar Energy Research Institute of Singapore).</p>
+            <div class="map-container">
+                <iframe src="https://seris.republicpolytechnic.edu.sg/portal/maps/irradiance_map" title="SERIS Live Irradiance Map"></iframe>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Source: <a href="https://seris.republicpolytechnic.edu.sg" target="_blank">SERIS</a></p>
+        </div>
+
+        <!-- Technology Comparison -->
+        <div class="content-block">
+            <h2>Solar Panel Technologies</h2>
+            <table class="tech-comparison">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Efficiency</th>
+                        <th>Lifespan</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Monocrystalline</strong></td>
+                        <td>High (20-22%)</td>
+                        <td>25+ years</td>
+                        <td>Limited roof space, high efficiency needs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polycrystalline</strong></td>
+                        <td>Medium (15-17%)</td>
+                        <td>25 years</td>
+                        <td>Budget-conscious, larger roofs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thin Film</strong></td>
+                        <td>Lower (10-13%)</td>
+                        <td>10-20 years</td>
+                        <td>Flexible applications, aesthetic integration</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Official Resources -->
+        <div class="content-block" id="resources">
+            <h2>Official Resources & Guidelines</h2>
+            <p>Access authoritative information from Singapore government agencies and research institutes.</p>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Energy Market Authority (EMA)</h4>
+                    <p>Regulatory guidelines, licensing, and national solar targets.</p>
+                    <a href="https://www.ema.gov.sg/solar-singapore" target="_blank">Visit EMA Solar Page →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>SERIS (National Solar Repository)</h4>
+                    <p>Technical data, irradiance maps, and research publications.</p>
+                    <a href="https://seris.republicpolytechnic.edu.sg" target="_blank">Visit SERIS →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>SP Group</h4>
+                    <p>Grid connection procedures, metering, and export tariffs.</p>
+                    <a href="https://www.spgroup.com.sg/solar" target="_blank">Visit SP Group →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>URA & BCA</h4>
+                    <p>Building codes, planning permissions, and structural guidelines.</p>
+                    <a href="https://www.ura.gov.sg" target="_blank">Visit URA →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SolarSG Initiative.</p>
+            <div style="margin-top: 1rem;">
+                <a href="index.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Back to Home</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
