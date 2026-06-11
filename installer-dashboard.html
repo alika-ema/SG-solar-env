@@ -5,180 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Installer Dashboard | SolarSG</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .stat-card { transition: transform 0.2s; }
-        .stat-card:hover { transform: translateY(-5px); }
-    </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
-    <!-- Top Navigation -->
     <nav class="bg-slate-800 text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-solar-panel text-yellow-400 text-2xl"></i>
-                    <span class="font-bold text-xl tracking-wide">SolarSG <span class="text-xs font-normal text-gray-400 ml-2">Installer Portal</span></span>
-                </div>
-                <div class="flex items-center gap-4">
-                    <span class="text-sm text-gray-300 hidden sm:block">Welcome, Installer</span>
-                    <a href="index.html" class="text-sm bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded transition">Exit to Site</a>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-solar-panel text-yellow-400 text-2xl"></i>
+                <span class="font-bold text-xl">SolarSG <span class="text-xs font-normal text-gray-400">Installer Portal</span></span>
             </div>
+            <a href="index.html" class="text-sm bg-slate-700 px-3 py-1 rounded hover:bg-slate-600">Exit</a>
         </div>
     </nav>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <!-- Header Stats -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Stats Row -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="stat-card bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 uppercase font-semibold">Total Leads</p>
-                        <p class="text-3xl font-bold text-gray-800" id="totalLeads">0</p>
-                    </div>
-                    <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-users"></i></div>
-                </div>
+            <div class="bg-white p-6 rounded shadow border-l-4 border-blue-500">
+                <p class="text-sm text-gray-500">Total Leads</p>
+                <p class="text-3xl font-bold" id="totalLeads">0</p>
             </div>
-            <div class="stat-card bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 uppercase font-semibold">Active Groups</p>
-                        <p class="text-3xl font-bold text-gray-800" id="activeGroups">0</p>
-                    </div>
-                    <div class="bg-green-100 p-3 rounded-full text-green-600"><i class="fa-solid fa-handshake"></i></div>
-                </div>
+            <div class="bg-white p-6 rounded shadow border-l-4 border-green-500">
+                <p class="text-sm text-gray-500">Active Groups</p>
+                <p class="text-3xl font-bold" id="activeGroups">0</p>
             </div>
-            <div class="stat-card bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 uppercase font-semibold">Top Area</p>
-                        <p class="text-xl font-bold text-gray-800 truncate" id="topArea">-</p>
-                    </div>
-                    <div class="bg-purple-100 p-3 rounded-full text-purple-600"><i class="fa-solid fa-map-location-dot"></i></div>
-                </div>
+            <div class="bg-white p-6 rounded shadow border-l-4 border-purple-500">
+                <p class="text-sm text-gray-500">Top Area</p>
+                <p class="text-xl font-bold truncate" id="topArea">-</p>
             </div>
-            <div class="stat-card bg-white p-6 rounded-lg shadow-md border-l-4 border-yellow-500">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 uppercase font-semibold">Pending Actions</p>
-                        <p class="text-3xl font-bold text-gray-800" id="pendingActions">0</p>
-                    </div>
-                    <div class="bg-yellow-100 p-3 rounded-full text-yellow-600"><i class="fa-solid fa-bell"></i></div>
-                </div>
+            <div class="bg-white p-6 rounded shadow border-l-4 border-yellow-500">
+                <p class="text-sm text-gray-500">Pending Contact</p>
+                <p class="text-3xl font-bold" id="pendingActions">0</p>
             </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- Left Column: Homeowner Leads (Demand) -->
-            <div class="lg:col-span-2 space-y-6">
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
-                        <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-list mr-2 text-blue-600"></i>Homeowner Interest (Live)</h2>
-                        <button onclick="renderLeads()" class="text-sm text-blue-600 hover:text-blue-800 font-medium"><i class="fa-solid fa-refresh"></i> Refresh</button>
-                    </div>
-                    
-                    <!-- Filters -->
-                    <div class="p-4 bg-gray-50 border-b border-gray-200 flex gap-2 overflow-x-auto">
-                        <select id="areaFilter" onchange="renderLeads()" class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-blue-500">
-                            <option value="all">All Areas</option>
-                            <option value="D09-D11">District 09-11</option>
-                            <option value="D10">District 10</option>
-                            <option value="D15-D16">District 15-16</option>
-                            <option value="D19-D20">District 19-20</option>
-                            <option value="D21-D23">District 21-23</option>
-                            <option value="D26-D28">District 26-28</option>
-                        </select>
-                        <select id="propertyFilter" onchange="renderLeads()" class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-blue-500">
-                            <option value="all">All Property Types</option>
-                            <option value="Terrace">Terrace</option>
-                            <option value="Semi-D">Semi-Detached</option>
-                            <option value="Bungalow">Bungalow</option>
-                        </select>
-                    </div>
-
-                    <!-- Leads Table -->
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Area / Type</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="leadsTableBody" class="bg-white divide-y divide-gray-200">
-                                <tr><td colspan="5" class="px-6 py-4 text-center text-gray-500">Loading leads...</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <!-- Leads Table -->
+            <div class="lg:col-span-2 bg-white rounded shadow overflow-hidden">
+                <div class="px-6 py-4 border-b flex justify-between items-center bg-gray-50">
+                    <h2 class="font-bold text-lg">Homeowner Interest (Live)</h2>
+                    <span class="text-xs text-gray-500 italic" id="dbStatus">Connecting...</span>
                 </div>
+                
+                <div class="p-4 bg-gray-50 border-b flex gap-2">
+                    <select id="areaFilter" onchange="renderLeads()" class="border rounded px-3 py-1 text-sm">
+                        <option value="all">All Areas</option>
+                        <option value="D09-D11">District 09-11</option>
+                        <option value="D10">District 10</option>
+                        <option value="D15-D16">District 15-16</option>
+                        <option value="D19-D20">District 19-20</option>
+                        <option value="D21-D23">District 21-23</option>
+                        <option value="D26-D28">District 26-28</option>
+                    </select>
+                </div>
+
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contact</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Area</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leadsTableBody" class="bg-white divide-y divide-gray-200">
+                        <tr><td colspan="4" class="px-6 py-8 text-center text-gray-500">Waiting for data...</td></tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Right Column: Create Group Buy (Supply) -->
-            <div class="space-y-6">
-                <!-- Create Campaign Form -->
-                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
-                    <h2 class="text-lg font-bold text-gray-800 mb-4"><i class="fa-solid fa-plus-circle mr-2 text-green-600"></i>Create Group Buy</h2>
-                    <p class="text-sm text-gray-600 mb-4">Launch a new group buy campaign. Homeowners in the selected area will be notified.</p>
-                    
-                    <form id="createGroupForm" onsubmit="handleCreateGroup(event)">
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Campaign Name</label>
-                            <input type="text" id="campaignName" required placeholder="e.g., Bukit Timah Solar Deal" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none">
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Target Area</label>
-                            <select id="targetArea" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none">
-                                <option value="D09-D11">District 09-11</option>
-                                <option value="D10">District 10 (Bukit Timah)</option>
-                                <option value="D15-D16">District 15-16 (East Coast)</option>
-                                <option value="D19-D20">District 19-20 (Tampines)</option>
-                                <option value="D21-D23">District 21-23 (Jurong)</option>
-                                <option value="D26-D28">District 26-28 (Yishun)</option>
-                            </select>
-                        </div>
+            <!-- Create Campaign -->
+            <div class="bg-white rounded shadow p-6 h-fit">
+                <h2 class="font-bold text-lg mb-4 text-green-700">Create Group Buy</h2>
+                <form onsubmit="handleCreateGroup(event)" class="space-y-4">
+                    <input type="text" id="campaignName" placeholder="Campaign Name" required class="w-full border rounded px-3 py-2">
+                    <select id="targetArea" required class="w-full border rounded px-3 py-2">
+                        <option value="D10">District 10 (Bukit Timah)</option>
+                        <option value="D09-D11">District 09-11</option>
+                        <option value="D15-D16">District 15-16</option>
+                        <option value="D19-D20">District 19-20</option>
+                        <option value="D21-D23">District 21-23</option>
+                        <option value="D26-D28">District 26-28</option>
+                    </select>
+                    <input type="number" id="minParticipants" placeholder="Min Participants" value="10" required class="w-full border rounded px-3 py-2">
+                    <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 rounded hover:bg-green-700">Launch Campaign</button>
+                </form>
 
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Min. Participants</label>
-                            <input type="number" id="minParticipants" required min="5" value="10" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none">
-                        </div>
-
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Estimated Discount (%)</label>
-                            <input type="number" id="discount" required min="1" max="50" value="15" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none">
-                        </div>
-
-                        <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 rounded-md hover:bg-green-700 transition shadow-lg transform active:scale-95">
-                            Launch Campaign
-                        </button>
-                    </form>
-
-                    <!-- Active Campaigns List -->
-                    <div class="mt-8 pt-6 border-t border-gray-200">
-                        <h3 class="text-sm font-bold text-gray-700 uppercase mb-3">Your Active Campaigns</h3>
-                        <div id="activeCampaignsList" class="space-y-3">
-                            <p class="text-sm text-gray-500 text-center">Loading campaigns...</p>
-                        </div>
-                    </div>
+                <div class="mt-8 pt-6 border-t">
+                    <h3 class="font-bold text-sm text-gray-700 mb-2">Your Active Campaigns</h3>
+                    <div id="activeCampaignsList" class="space-y-2 text-sm"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDK & Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, where, onSnapshot, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Your Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDmUXNY1WtfGRm1xkH_Z1PoEMi2cy-2j2I",
             authDomain: "solarsg-platform.firebaseapp.com",
@@ -188,30 +113,36 @@
             appId: "1:845541201143:web:1c0af9329fbfa6cf44eff2"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // --- State Management ---
         let allLeads = [];
         let allCampaigns = [];
 
-        // --- Fetch Leads (Realtime) ---
+        // --- 1. Listen to Leads ---
+        console.log("🔍 Listening to collection: 'homeowner_interest'");
         const leadsQuery = query(collection(db, "homeowner_interest"), orderBy("createdAt", "desc"));
         
         onSnapshot(leadsQuery, (snapshot) => {
+            console.log(`📥 Received ${snapshot.size} documents from 'homeowner_interest'`);
+            document.getElementById('dbStatus').innerText = `Live (${snapshot.size} records)`;
+            
             allLeads = [];
             snapshot.forEach((doc) => {
                 allLeads.push({ id: doc.id, ...doc.data() });
             });
             updateStats();
             renderLeads();
+        }, (error) => {
+            console.error("❌ Error listening to leads:", error);
+            document.getElementById('dbStatus').innerText = "Error loading data";
+            document.getElementById('dbStatus').classList.add('text-red-500');
         });
 
-        // --- Fetch Campaigns (Realtime) ---
+        // --- 2. Listen to Campaigns ---
         const campaignsQuery = query(collection(db, "group_buy_campaigns"), orderBy("createdAt", "desc"));
-
         onSnapshot(campaignsQuery, (snapshot) => {
+            console.log(`📥 Received ${snapshot.size} documents from 'group_buy_campaigns'`);
             allCampaigns = [];
             snapshot.forEach((doc) => {
                 allCampaigns.push({ id: doc.id, ...doc.data() });
@@ -221,106 +152,71 @@
         });
 
         // --- Functions ---
-
         function updateStats() {
             document.getElementById('totalLeads').innerText = allLeads.length;
-            document.getElementById('activeGroups').innerText = allCampaigns.filter(c => c.status === 'active').length;
+            document.getElementById('activeGroups').innerText = allCampaigns.length;
             
-            // Calculate Top Area
             if (allLeads.length > 0) {
                 const areaCounts = {};
-                allLeads.forEach(lead => {
-                    areaCounts[lead.area] = (areaCounts[lead.area] || 0) + 1;
-                });
-                const topArea = Object.keys(areaCounts).reduce((a, b) => areaCounts[a] > areaCounts[b] ? a : b);
-                document.getElementById('topArea').innerText = topArea;
-            } else {
-                document.getElementById('topArea').innerText = "-";
+                allLeads.forEach(l => areaCounts[l.area] = (areaCounts[l.area] || 0) + 1);
+                const top = Object.keys(areaCounts).reduce((a, b) => areaCounts[a] > areaCounts[b] ? a : b);
+                document.getElementById('topArea').innerText = top;
             }
-
-            document.getElementById('pendingActions').innerText = allLeads.filter(l => !l.contacted).length;
         }
 
         window.renderLeads = function() {
             const tbody = document.getElementById('leadsTableBody');
-            const areaFilter = document.getElementById('areaFilter').value;
-            const propFilter = document.getElementById('propertyFilter').value;
-
+            const filter = document.getElementById('areaFilter').value;
             tbody.innerHTML = '';
 
-            const filteredLeads = allLeads.filter(lead => {
-                const matchArea = areaFilter === 'all' || lead.area === areaFilter;
-                const matchProp = propFilter === 'all' || lead.propertyType === propFilter;
-                return matchArea && matchProp;
-            });
+            const filtered = filter === 'all' ? allLeads : allLeads.filter(l => l.area === filter);
 
-            if (filteredLeads.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-gray-500">No leads found matching filters.</td></tr>';
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="px-6 py-4 text-center text-gray-500">No leads found.</td></tr>';
                 return;
             }
 
-            filteredLeads.forEach(lead => {
+            filtered.forEach(lead => {
                 const date = lead.createdAt ? new Date(lead.createdAt.seconds * 1000).toLocaleDateString() : 'Just now';
-                const row = `
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm font-medium text-gray-900">${lead.name}</div>
-                            <div class="text-xs text-gray-500">${lead.notes ? 'Note: ' + lead.notes.substring(0, 20) + '...' : ''}</div>
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="font-bold">${lead.name}</div>
+                            <div class="text-xs text-gray-500">${lead.propertyType}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">${lead.email}</div>
-                            <div class="text-sm text-gray-500">${lead.phone}</div>
+                        <td class="px-6 py-4 text-sm">
+                            <div>${lead.email}</div>
+                            <div class="text-gray-500">${lead.phone}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">${lead.area}</span>
-                            <div class="text-xs text-gray-500 mt-1">${lead.propertyType}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${date}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <button onclick="copyContact('${lead.name}', '${lead.phone}')" class="text-indigo-600 hover:text-indigo-900 mr-2"><i class="fa-regular fa-copy"></i> Copy</button>
-                            <a href="mailto:${lead.email}" class="text-green-600 hover:text-green-900"><i class="fa-regular fa-envelope"></i> Email</a>
+                        <td class="px-6 py-4"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">${lead.area}</span></td>
+                        <td class="px-6 py-4">
+                            <button onclick="navigator.clipboard.writeText('${lead.name}: ${lead.phone}');alert('Copied!')" class="text-blue-600 hover:underline text-sm">Copy Contact</button>
                         </td>
                     </tr>
                 `;
-                tbody.innerHTML += row;
             });
         }
 
         window.renderCampaigns = function() {
-            const container = document.getElementById('activeCampaignsList');
-            container.innerHTML = '';
-
-            if (allCampaigns.length === 0) {
-                container.innerHTML = '<p class="text-sm text-gray-500 text-center">No active campaigns.</p>';
+            const div = document.getElementById('activeCampaignsList');
+            div.innerHTML = '';
+            if(allCampaigns.length === 0) {
+                div.innerHTML = '<p class="text-gray-500 italic">No active campaigns.</p>';
                 return;
             }
-
-            allCampaigns.forEach(cam => {
-                const item = `
-                    <div class="bg-gray-50 p-3 rounded border border-gray-200">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-sm text-gray-800">${cam.campaignName}</h4>
-                                <p class="text-xs text-gray-500">Target: ${cam.targetArea} | Min: ${cam.minParticipants}</p>
-                                <p class="text-xs font-bold text-green-600 mt-1">${cam.discount}% Est. Discount</p>
-                            </div>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
-                        </div>
-                        <div class="mt-2 pt-2 border-t border-gray-200 flex justify-between items-center">
-                            <span class="text-xs text-gray-400">ID: ${cam.id.substring(0,6)}...</span>
-                            <button onclick="copyGroupId('${cam.id}')" class="text-xs text-blue-600 hover:underline">Copy Join Link</button>
-                        </div>
+            allCampaigns.forEach(c => {
+                div.innerHTML += `
+                    <div class="bg-gray-50 p-2 rounded border">
+                        <div class="font-bold">${c.campaignName}</div>
+                        <div class="text-xs text-gray-500">${c.targetArea} | Min: ${c.minParticipants}</div>
                     </div>
                 `;
-                container.innerHTML += item;
             });
         }
 
-        // --- Handle Form Submission (Create Group) ---
         window.handleCreateGroup = async function(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
+            const btn = e.target.querySelector('button');
             btn.innerText = "Launching...";
             btn.disabled = true;
 
@@ -329,38 +225,24 @@
                     campaignName: document.getElementById('campaignName').value,
                     targetArea: document.getElementById('targetArea').value,
                     minParticipants: parseInt(document.getElementById('minParticipants').value),
-                    discount: parseInt(document.getElementById('discount').value),
                     status: 'active',
-                    createdAt: serverTimestamp(),
-                    installerId: 'demo-installer-01' // In real app, this comes from Auth
+                    createdAt: serverTimestamp()
                 });
-                alert("Campaign launched successfully!");
-                document.getElementById('createGroupForm').reset();
-            } catch (error) {
-                console.error("Error adding campaign: ", error);
-                alert("Error launching campaign. Check console.");
+                alert("Campaign Launched!");
+                e.target.reset();
+            } catch (err) {
+                console.error(err);
+                alert("Error launching campaign.");
             } finally {
-                btn.innerText = originalText;
+                btn.innerText = "Launch Campaign";
                 btn.disabled = false;
             }
         }
-
-        // --- Helper Functions ---
-        window.copyContact = function(name, phone) {
-            navigator.clipboard.writeText(`${name} - ${phone}`);
-            alert(`Copied contact info for ${name} to clipboard!`);
-        }
-
-        window.copyGroupId = function(id) {
-            // In a real app, this would be a full URL like solarsg.com/group-buys.html?join=ID
-            const link = `https://solarsg-platform.web.app/group-buys.html?join=${id}`;
-            navigator.clipboard.writeText(link);
-            alert("Join link copied to clipboard! Send this to homeowners.");
-        }
-
-        // Expose functions to window for HTML onclick events
+        
+        // Expose to window
         window.renderLeads = renderLeads;
         window.renderCampaigns = renderCampaigns;
+        window.handleCreateGroup = handleCreateGroup;
     </script>
 </body>
 </html>
